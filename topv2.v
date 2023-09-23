@@ -9,10 +9,11 @@ module topv2
     //input  [NB_AB-1 : 0] i_sw,
     output         [NB_AB-1  : 0]  o_led,
     input          [NB_OP-1  : 0]   i_sw,
-    input                [NB_BTN-1 : 0]  i_btn,
-    input                                clock,
-    input                              i_reset
+    input          [NB_BTN-1 : 0]  i_btn,
+    input                          clock,
+    input                        i_reset
 );
+
 
 reg signed  [NB_AB-1  : 0]             a_data;
 reg signed  [NB_AB-1  : 0]             b_data;
