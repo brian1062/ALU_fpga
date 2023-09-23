@@ -23,19 +23,106 @@ initial begin
     #10;
     i_btn                     = 3'b100     ;   
     #10;
+    $display("----------------------Suma------------------------------");
     repeat (50) begin
         generate_random_input();
-        $display("Time: %0t, A: %b, B: %b, Result: %b", $time, a_data, i_sw, o_led);
+        $display("Time: %0t, A: %b + B: %b, Result: %b", $time, a_data, i_sw, o_led);
+        if (o_led !== a_data + i_sw) begin
+            $display("Suma incorrecta! Esperado: %b, Obtenido: %b", a_data + i_sw, o_led);
+        end
     end
     #10;
     i_sw                      = 6'b100010  ;   //RESTA
     #10;
     i_btn                     = 3'b100     ;
     #10;
+    $display("----------------------Resta------------------------------");
     repeat (50) begin
         generate_random_input();
-        $display("Time: %0t, A: %b, B: %b, Result: %b", $time, a_data, i_sw, o_led);
+        $display("Time: %0t, A: %b - B: %b, Result: %b", $time, a_data, i_sw, o_led);
 
+        if (o_led !== a_data - i_sw) begin
+            $display("Resta incorrecta! Esperado: %b, Obtenido: %b", a_data - i_sw, o_led);
+        end
+    end
+    #10;
+    i_sw                      = 6'b100100  ;   //AND
+    #10;
+    i_btn                     = 3'b100     ;
+    #10;
+    $display("----------------------AND------------------------------");
+    repeat (50) begin
+        generate_random_input();
+        $display("Time: %0t, A: %b AND B: %b, Result: %b", $time, a_data, i_sw, o_led);
+
+        if (o_led !== (a_data & i_sw)) begin
+            $display("AND incorrecta! Esperado: %b, Obtenido: %b", a_data & i_sw, o_led);
+        end
+    end
+    #10;
+    i_sw                      = 6'b100101  ;   //OR
+    #10;
+    i_btn                     = 3'b100     ;
+    #10;
+    $display("----------------------OR------------------------------");
+    repeat (50) begin
+        generate_random_input();
+        $display("Time: %0t, A: %b OR B: %b, Result: %b", $time, a_data, i_sw, o_led);
+        
+        if (o_led !== (a_data | i_sw)) begin
+            $display("OR incorrecta! Esperado: %b, Obtenido: %b", a_data | i_sw, o_led);
+        end
+    end
+    i_sw                      = 6'b100110  ;   //XOR
+    #10;
+    i_btn                     = 3'b100     ;
+    #10;
+    $display("----------------------XOR------------------------------");
+    repeat (50) begin
+        generate_random_input();
+        $display("Time: %0t, A: %b XOR, B: %b, Result: %b", $time, a_data, i_sw, o_led);
+        
+        if (o_led !== (a_data ^ i_sw)) begin
+            $display("XOR incorrecta! Esperado: %b, Obtenido: %b", a_data ^ i_sw, o_led);
+        end
+    end
+    #10;
+    i_sw                      = 6'b100111  ;   //NOR
+    #10;
+    i_btn                     = 3'b100     ;
+    #10;
+    $display("----------------------NOR------------------------------");
+    repeat (50) begin
+        generate_random_input();
+        $display("Time: %0t, A: %b NOR, B: %b, Result: %b", $time, a_data, i_sw, o_led);
+        
+        if (o_led !== (~(a_data ^ i_sw))) begin
+            $display("NOR incorrecta! Esperado: %b, Obtenido: %b", ~(a_data ^ i_sw), o_led);
+        end
+    end
+    #10;
+    i_sw                      = 6'b000011  ;   //SRA
+    #10;
+    i_btn                     = 3'b100     ;
+    #10;
+    $display("----------------------SRA------------------------------");
+    repeat (50) begin
+        generate_random_input();
+        $display("Time: %0t, A: %b SRA, B: %b, Result: %b", $time, a_data, i_sw, o_led);
+    end
+    #10;
+    i_sw                      = 6'b000010  ;   //SRL
+    #10;
+    i_btn                     = 3'b100     ;
+    #10;
+    $display("----------------------SRL------------------------------");
+    repeat (50) begin
+        generate_random_input();
+        $display("Time: %0t, A: %b SRL, B: %b, Result: %b", $time, a_data, i_sw, o_led);
+        
+        if (o_led !== a_data >> i_sw) begin
+            $display("SRL incorrecta! Esperado: %b, Obtenido: %b", a_data >> i_sw, o_led);
+        end
     end
     #10;
     $finish;
